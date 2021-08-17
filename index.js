@@ -61,10 +61,26 @@ Use the inning function below to do the following:
   
 NOTE: This will be a callback function for the tasks below
 */
-
-function inning(/*Code Here*/){
-    /*Code Here*/
+//function keyword declares to computer you are making a function
+//inning is the name of this function
+//num is the parameter that the function will take in, this is a banana word, meaning you could put the parameter
+//as cupcake and the computer would still output it the same way as if it was num
+//parameters are given names that make logical sense to the human eyes reading them
+function inning(num){
+  //we need to write an if-else statement. if something, do this; else do that. Think of this in a way that
+  //we would speak as humans. If this condition is met (if number is less than or equal to what we need) then
+  //success!! Return us a random number. Else, return a number that is between the range we need, even though
+  //they didn't enter a number less than or equal to 3
+  //see below for implementation with notes
+  //if number given to function is less than or equal to 3 give us a random number between that given num
+      if (num <= 3) {
+        return Math.floor(Math.random() * num) //check MDN for this if confused on Math.floor or Math.random
+      } else {
+        //else if the number is greater than 3, give me a random number between 0-2
+        return Math.floor(Math.random() * 3)
+      }
 }
+console.log(inning(3));
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -81,9 +97,22 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*code Here*/){
-  /*Code Here*/
+function finalScore(inningcb, num){
+  const Final = {}; //this looks like an array[] and not an object{}
+  let homescore = 0
+  let awayscore = 0
+   for (let i = 0; i < num; i++) {
+     const current = num[inningcb]; //can't access the index of an integer, it isn't an array
+     //we can have a score variable and set that equal to our call back
+     //from there we can set homesore or awayscore +=(this is a shortcut to add to our variable) 
+     //whatever the score value is and in the end we can return a key:value pair inside our object
+     homescore = homescore + current.home;
+     awayscore = awayscore + current.away;
+     Final.push(`inning ${i + 1}: home ${current.homescore} - away ${current.awayscore}`);
+    }
+    return Final
 }
+  console.log(finalScore(inning))
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
